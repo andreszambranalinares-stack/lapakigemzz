@@ -1,0 +1,248 @@
+/* ===== ESTILOS DE "LA PAKI GEMZZ" - ROSA PASTEL ===== */
+
+/* --- ELIMINAMOS 'scroll-behavior' DE AQUÍ --- */
+/* Ya no es necesario, JavaScript lo maneja mejor */
+
+/* Paleta de Colores Base */
+:root {
+    --primary-rose: #FFC0CB; /* Rosa pastel principal */
+    --secondary-rose: #F0A8C0; /* Rosa un poco más oscuro para acentos */
+    --light-bg: #FFF0F5;     /* Fondo muy claro, casi blanco rosado */
+    --dark-text: #333333;    /* Texto oscuro para contraste */
+    --light-text: #666666;   /* Texto secundario claro */
+    --navbar-bg-transparent: rgba(255, 192, 203, 0.7); /* Rosa pastel transparente */
+    --navbar-bg-solid: #FFC0CB; /* Rosa pastel sólido para el scroll */
+    --dark-footer: #F0A8C0;   /* Rosa oscuro para el footer */
+}
+
+body {
+    font-family: 'Arial', sans-serif; /* Puedes cambiar la fuente si quieres */
+    color: var(--dark-text);
+    background-color: var(--light-bg);
+}
+
+/* Efecto del Menú de Navegación */
+.navbar.sticky-top {
+    background-color: var(--navbar-bg-transparent) !important; /* Empieza transparente */
+    backdrop-filter: blur(5px); /* Efecto de desenfoque detrás del menú */
+    transition: background-color 0.4s ease-out;
+}
+
+.navbar.sticky-top.navbar-scrolled {
+    background-color: var(--navbar-bg-solid) !important; /* Rosa sólido al hacer scroll */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.8rem; /* Tamaño más grande para el nombre de la marca */
+    color: var(--dark-text) !important; /* Color de texto oscuro para el nombre */
+}
+
+.navbar-brand .bi-gem {
+    color: #f7a7bb; /* Color del icono de gema */
+    margin-right: 5px;
+}
+
+.navbar-nav .nav-link {
+    color: var(--dark-text) !important; /* Links del menú en color oscuro */
+    font-weight: 500;
+}
+
+.navbar-nav .nav-link:hover {
+    color: white !important; /* Texto blanco al pasar el ratón */
+    background-color: var(--secondary-rose); /* Fondo rosa oscuro al pasar el ratón */
+    border-radius: 5px;
+}
+
+/* Sección de Bienvenida */
+.hero-section {
+    background-color: var(--light-bg); /* Fondo muy claro */
+    padding-top: 120px;
+    padding-bottom: 80px;
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--dark-text);
+}
+
+.hero-section h1 {
+    font-size: 3.5rem; /* Título principal más grande */
+    color: var(--dark-text);
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+}
+
+.hero-section .lead {
+    color: var(--light-text);
+}
+
+.hero-section .btn-primary {
+    background-color: var(--secondary-rose);
+    border-color: var(--secondary-rose);
+    color: white;
+    font-weight: bold;
+    padding: 15px 30px;
+    border-radius: 30px; /* Botones más redondeados */
+    transition: all 0.3s ease;
+}
+
+.hero-section .btn-primary:hover {
+    background-color: #e090b0; /* Rosa más oscuro al pasar el ratón */
+    border-color: #e090b0;
+    transform: translateY(-2px); /* Pequeño efecto al pasar el ratón */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+
+/* Carrusel */
+.carousel-item {
+    height: 450px;
+    background-color: var(--secondary-rose); /* Fondo rosa para el carrusel */
+}
+.carousel-item img {
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.8); /* Oscurece menos la imagen */
+}
+.carousel-caption h5, .carousel-caption p {
+    color: white; /* Texto del carrusel en blanco */
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
+}
+
+/* Indicadores y controles del carrusel */
+.carousel-indicators [data-bs-target] {
+    background-color: var(--dark-text); /* Indicadores oscuros */
+}
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    filter: invert(1); /* Iconos de flecha blancos */
+}
+
+
+/* Secciones Generales */
+section {
+    padding-top: 70px;
+    padding-bottom: 70px; /* Añadimos padding-bottom para que haya más espacio */
+    color: var(--dark-text);
+}
+
+h2.display-5 {
+    color: var(--secondary-rose); /* Títulos de sección en rosa oscuro */
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+p.lead {
+    color: var(--light-text);
+}
+
+
+/* Sección "¿Qué son?" */
+.about-section {
+    background-color: var(--light-bg); /* Fondo muy claro */
+}
+
+/* --- REGLA MODIFICADA (Ajuste de imagen) --- */
+.about-section .img-fluid {
+    border: 3px solid var(--primary-rose); /* Borde rosa para la imagen */
+    
+    /* Ajustes para hacerla más pequeña y centrada */
+    max-width: 70%; /* La imagen ocupará un máximo del 70% de su columna */
+    display: block;   /* Necesario para que funcione el centrado */
+    margin: 0 auto; /* Centra la imagen horizontalmente */
+}
+
+
+/* Sección "Tratamientos Posteriores" */
+#cuidados .text-danger {
+    color: var(--secondary-rose) !important; /* Rojo cambia a un rosa más oscuro */
+    font-weight: bold;
+}
+#cuidados .text-success {
+    color: #8BC34A !important; /* Mantener un verde agradable para "correcto" */
+    font-weight: bold;
+}
+#cuidados .list-group-item {
+    background-color: transparent;
+    border-color: rgba(0,0,0,0.05);
+}
+
+/* Sección "¿Dónde estoy?" */
+#donde-estoy {
+    background-color: var(--light-bg); /* Fondo muy claro */
+}
+#donde-estoy address strong, #donde-estoy address {
+    color: var(--dark-text);
+}
+#donde-estoy .bg-secondary {
+    background-color: #d1d1d1 !important; /* Un gris más claro para el mapa */
+}
+
+
+/* Sección "Contacto" */
+#contacto .btn-success { /* WhatsApp */
+    background-color: #25D366; /* Verde de WhatsApp */
+    border-color: #25D366;
+    color: white;
+    font-weight: bold;
+    padding: 20px;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+}
+#contacto .btn-success:hover {
+    background-color: #1DA851;
+    border-color: #1DA851;
+    transform: translateY(-2px);
+}
+
+#contacto .btn-danger { /* Instagram */
+    background-color: #C13584 !important; /* Color de Instagram */
+    border-color: #C13584 !important;
+    color: white;
+    font-weight: bold;
+    padding: 20px;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+}
+#contacto .btn-danger:hover {
+    background-color: #A82A6E !important;
+    border-color: #A82A6E !important;
+    transform: translateY(-2px);
+}
+
+/* Pie de Página */
+footer {
+    background-color: var(--dark-footer); /* Rosa oscuro para el footer */
+    color: white;
+    padding: 30px 0;
+}
+footer .bi-heart-fill {
+    color: white !important;
+}
+
+/* Ajustes responsivos para tamaños de fuente */
+@media (max-width: 768px) {
+    .navbar-brand {
+        font-size: 1.5rem;
+    }
+    .hero-section h1 {
+        font-size: 2.5rem;
+    }
+    .hero-section .btn-primary {
+        padding: 12px 25px;
+        font-size: 1rem;
+    }
+    .carousel-item {
+        height: 300px; /* Reduce la altura del carrusel en móviles */
+    }
+    .carousel-caption {
+        display: none !important; /* Oculta los captions en móviles para mayor claridad */
+    }
+    
+    /* --- REGLA MODIFICADA --- */
+    /* En móvil, la imagen vuelve al 100% para que no se vea demasiado pequeña */
+    .about-section .img-fluid {
+        max-width: 100%;
+        margin-top: 20px;
+    }
+}
