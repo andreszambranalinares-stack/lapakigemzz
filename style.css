@@ -66,7 +66,7 @@ body {
 /* --- 1. SECCIÓN DE BIENVENIDA MODIFICADA --- */
 .hero-section {
     /* ▼▼▼ AQUÍ ESTÁ LA CORRECCIÓN A .jpg ▼▼▼ */
-    background-image: url('fondo_inicio.png'); /* 1. Tu imagen de fondo */
+    background-image: url('fondo_inicio.PNG'); /* 1. Tu imagen de fondo */
     background-size: cover;                   /* 2. Cubre toda la sección */
     background-position: center center;       /* 3. Centra la imagen */
     background-repeat: no-repeat;
