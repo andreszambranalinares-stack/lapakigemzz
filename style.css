@@ -15,7 +15,7 @@
 body {
     font-family: 'Arial', sans-serif; /* Puedes cambiar la fuente si quieres */
     color: var(--dark-text);
-    background-color: var(--light-bg);
+    background-color: var(--light-bg); /* Este es el fondo rosa pálido de toda la web */
 }
 
 /* Efecto del Menú de Navegación */
@@ -38,12 +38,12 @@ body {
     padding-bottom: 5px;
 }
 
-/* Regla nueva para tu logo */
+/* Regla para tu logo */
 .navbar-logo {
-    height: 50px; /* <-- AJUSTA ESTE NÚMERO (ej: 40px, 60px) para cambiar el tamaño del logo */
+    height: 50px; /* <-- AJUSTA ESTE NÚMERO para cambiar el tamaño */
     width: auto; /* Mantiene la proporción */
-    border-radius: 50%; /* Añadido: Hace tu logo circular */
-    border: 2px solid white; /* Añadido: Un pequeño borde blanco */
+    border-radius: 50%; /* Hace tu logo circular */
+    border: 2px solid white; /* Un pequeño borde blanco */
 }
 
 .navbar-brand .bi-gem {
@@ -63,26 +63,79 @@ body {
     border-radius: 5px;
 }
 
-/* Sección de Bienvenida */
+/* --- 1. SECCIÓN DE BIENVENIDA MODIFICADA --- */
 .hero-section {
-    background-color: var(--light-bg); /* Fondo muy claro */
+    /* ▼▼▼ AQUÍ ESTÁ LA CORRECCIÓN A .jpg ▼▼▼ */
+    background-image: url('fondo_inicio.png'); /* 1. Tu imagen de fondo */
+    background-size: cover;                   /* 2. Cubre toda la sección */
+    background-position: center center;       /* 3. Centra la imagen */
+    background-repeat: no-repeat;
+    position: relative; /* 4. Necesario para la capa opaca */
+    z-index: 1;         /* 5. Establece un "contexto" de capas */
+
     padding-top: 120px;
     padding-bottom: 80px;
     min-height: 50vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--dark-text);
+    color: var(--dark-text); /* 6. Color de texto oscuro para que se lea sobre el fondo claro */
 }
 
-.hero-section h1 {
-    font-size: 3.5rem; /* Título principal más grande */
-    color: var(--dark-text);
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+/* --- 2. ESTILO AÑADIDO PARA LA CAPA OPACA BLANCA --- */
+.hero-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Esta es la capa blanca opaca (blanco al 70% de opacidad) */
+    background-color: rgba(255, 255, 255, 0.7); 
+    z-index: -1; /* Envía la capa detrás del texto, pero encima de la imagen de fondo */
+}
+/* --- FIN DE ESTILO PARA LA CAPA OPACA --- */
+
+
+/* --- 3. ESTILO TÍTULO MODIFICADO (Borde oscuro) --- */
+.hero-title-graffiti {
+    font-family: 'Monoton', cursive; /* Aplicamos la nueva fuente */
+    font-size: 5.5rem; /* Tamaño grande para el efecto */
+    color: #f7a7bb; /* Un rosa brillante */
+    text-shadow: 
+        /* Cambiamos el borde blanco por uno oscuro para que resalte sobre el fondo claro */
+        -2px -2px 0px var(--dark-text),
+        2px -2px 0px var(--dark-text),
+        -2px 2px 0px var(--dark-text),
+        2px 2px 0px var(--dark-text),
+        0 0 15px rgba(255, 192, 203, 0.8),
+        0 0 30px rgba(255, 192, 203, 0.6);
+    line-height: 1; 
+    letter-spacing: 2px;
+    position: relative; /* Asegura que esté por encima de la capa opaca */
+    z-index: 2;
 }
 
+/* Ajuste para que el título no sea excesivamente grande en móviles */
+@media (max-width: 768px) {
+    .hero-title-graffiti {
+        font-size: 3rem; /* Tamaño más pequeño en móviles */
+        text-shadow: 
+            -1px -1px 0px var(--dark-text), 
+            1px -1px 0px var(--dark-text),
+            -1px 1px 0px var(--dark-text),
+            1px 1px 0px var(--dark-text),
+            0 0 10px rgba(255, 192, 203, 0.7);
+    }
+}
+/* --- FIN DE ESTILO TÍTULO --- */
+
+
+/* --- 4. ESTILO DEL TEXTO Y BOTÓN (z-index) --- */
 .hero-section .lead {
-    color: var(--light-text);
+    color: var(--light-text); /* Texto secundario oscuro */
+    position: relative;
+    z-index: 2; /* Nos aseguramos de que esté por encima de la capa */
 }
 
 .hero-section .btn-primary {
@@ -93,7 +146,10 @@ body {
     padding: 15px 30px;
     border-radius: 30px; /* Botones más redondeados */
     transition: all 0.3s ease;
+    position: relative;
+    z-index: 2; /* Nos aseguramos de que esté por encima de la capa */
 }
+/* --- FIN DE ESTILOS DE TEXTO Y BOTÓN --- */
 
 .hero-section .btn-primary:hover {
     background-color: #e090b0; /* Rosa más oscuro al pasar el ratón */
@@ -133,6 +189,12 @@ section {
     padding-bottom: 70px; /* Añadimos padding-bottom para que haya más espacio */
     color: var(--dark-text);
 }
+/* Esto asegura que el fondo NO se aplique a otras secciones */
+section#inicio {
+    padding-top: 70px; /* Sobrescribe si es necesario */
+    padding-bottom: 70px;
+}
+
 
 h2.display-5 {
     color: var(--secondary-rose); /* Títulos de sección en rosa oscuro */
@@ -229,9 +291,9 @@ footer .bi-heart-fill {
         height: 40px; /* Un poco más pequeño en móvil */
     }
 
-    .hero-section h1 {
-        font-size: 2.5rem;
-    }
+    /* Ya manejado en .hero-title-graffiti */
+    /* .hero-section h1 { font-size: 2.5rem; } */ 
+
     .hero-section .btn-primary {
         padding: 12px 25px;
         font-size: 1rem;
@@ -249,7 +311,6 @@ footer .bi-heart-fill {
     }
 }
 
-/* --- NUEVO CÓDIGO AÑADIDO AL FINAL --- */
 /* --- Estilos para el Mapa de Google --- */
 .mapa-responsive-container {
     overflow: hidden;
